@@ -1,6 +1,6 @@
 /**
  @author Jim Mondaix
- @version 0.0.0
+ @version 1.0.0
  @since 2016-9-12
 */
 import java.io.IOException;
@@ -9,20 +9,6 @@ import java.util.*;
 public class MoneyManger {
 	private static double m_Balance;
 	private static String m_log;
-	public static double balanceInitalizer(){
-		m_Balance = -46.45; // A number normally not allowed so I can initialize it as 0 elsewhere without it being destroyed by accident
-		return(m_Balance);
-	}
-	public static String logInitalizer(){
-		String log = "";
-		log = m_log; // Initializes log as blank
-		return(m_log);
-	}
-	public static void inputMethod() {
-		//input methods should go here
-		Scanner m_input = new Scanner(System.in);
-		
-	}
 	private static void PINMethod() throws IOException {
 		int enteredPIN = 0;
 		boolean InvalidPIN = false;
@@ -53,9 +39,7 @@ public class MoneyManger {
 			InvalidPIN = false;
 		System.out.println("Successful login");
 	}
-	public static void Logger() {
-		// modular log keeping will be added soon. Will improve to save to file
-	}
+	
 	public static void menu1() throws IOException{
 		String desc2Log = "";
 		double inputMoney = 0.0;
@@ -84,6 +68,7 @@ public class MoneyManger {
 		m_log += desc2Log;
 		
 	}
+	
 	public static void menu2(){
 		String desc2Log = "";
 		double inputMoney = 0.0;
@@ -117,9 +102,10 @@ public class MoneyManger {
 		System.out.println(desc2Log);
 		
 	}
+	
 	public static void menu3(){
 		String log = m_log;
-		if (log == ""){ 
+		if (log == null){ 
 			System.out.println("Log is empty");
 		}
 		else{
@@ -128,6 +114,7 @@ public class MoneyManger {
 		
 				
 	}
+	
 	public static void menu4() throws IOException{
 		Scanner input = new Scanner(System.in);
 		System.out.println(m_Balance + "" + m_log);
@@ -146,19 +133,9 @@ public class MoneyManger {
 		}
 	}
 	
-
 	public static void main(String[] args) throws IOException {
 		System.out.println("Hello and welcome to Zen's Money Manger");
-		inputMethod();
-		logInitalizer();
-		balanceInitalizer();
 		Scanner input = new Scanner(System.in);
-		Logger();
-		
-		if (m_Balance == -46.45){ // sets the balance and log to zero, and insures that they don't get destroyed later on.
-			m_Balance = 0.0;
-			m_log = "";
-		}
 		PINMethod();
 		for(int i = 5; i < 20;){
 			System.out.println("Welcome to the main menu.");
